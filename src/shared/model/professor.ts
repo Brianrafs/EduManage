@@ -1,30 +1,35 @@
-import {Turma} from "./turma";
+import { Classroom } from "./classroom";
+import {User} from "./user";
 
-export class Professor{
+export class Professor extends User{
 
-  constructor(private _nomeCompleto: string,
-              private _rg: string,
+  constructor(id: number,
+              email: string,
+              hashedPassword: string,
+              private _fullName: string,
+              private _idCard: string,
               private _cpf: string,
-              private _dataNascimento: Date,
-              private _telefone: string,
-              private _email: string,
-              private _sexo: string,
-              private _turmas: Turma[]) {
-  }
-  get nomeCompleto(): string {
-    return this._nomeCompleto;
+              private _dateOfBirth: Date,
+              private _phoneNumber: string,
+              private _gender: string,
+              private _classrooms: Classroom[]) {
+    super(id, email, hashedPassword)
   }
 
-  set nomeCompleto(value: string) {
-    this._nomeCompleto = value;
+  get fullName(): string {
+    return this._fullName;
   }
 
-  get rg(): string {
-    return this._rg;
+  set fullName(value: string) {
+    this._fullName = value;
   }
 
-  set rg(value: string) {
-    this._rg = value;
+  get idCard(): string {
+    return this._idCard;
+  }
+
+  set idCard(value: string) {
+    this._idCard = value;
   }
 
   get cpf(): string {
@@ -35,44 +40,35 @@ export class Professor{
     this._cpf = value;
   }
 
-  get dataNascimento(): Date {
-    return this._dataNascimento;
+  get dateOfBirth(): Date {
+    return this._dateOfBirth;
   }
 
-  set dataNascimento(value: Date) {
-    this._dataNascimento = value;
+  set dateOfBirth(value: Date) {
+    this._dateOfBirth = value;
   }
 
-  get telefone(): string {
-    return this._telefone;
+  get phoneNumber(): string {
+    return this._phoneNumber;
   }
 
-  set telefone(value: string) {
-    this._telefone = value;
+  set phoneNumber(value: string) {
+    this._phoneNumber = value;
   }
 
-  get email(): string {
-    return this._email;
+  get gender(): string {
+    return this._gender;
   }
 
-  set email(value: string) {
-    this._email = value;
+  set gender(value: string) {
+    this._gender = value;
   }
 
-  get sexo(): string {
-    return this._sexo;
+  get classrooms(): Classroom[] {
+    return this._classrooms;
   }
 
-  set sexo(value: string) {
-    this._sexo = value;
+  set classrooms(value: Classroom[]) {
+    this._classrooms = value;
   }
-
-  get turmas(): Turma[] {
-    return this._turmas;
-  }
-
-  set turmas(value: Turma[]) {
-    this._turmas = value;
-  }
-
 }
