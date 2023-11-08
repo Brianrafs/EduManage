@@ -30,7 +30,8 @@ imports: [
     RouterModule
   ],
   exports:[
-    LoginFormComponent
+    LoginFormComponent,
+    NewUserFormComponent
   ]
 })
 export class LayoutModule { }

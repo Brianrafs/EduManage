@@ -1,0 +1,13 @@
+{
+  "users":[
+    {
+      "manager":
+        {
+          "nick": "admin",
+          "email": "admin@admin.com",
+          "hashedPassword":""
+        }
+    }
+  ]
+  
+}

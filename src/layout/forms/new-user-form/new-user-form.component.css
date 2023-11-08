@@ -1,0 +1,43 @@
+.container{
+    background-image: url(src\assets\imgs\background.jpeg);
+    background-size: cover;
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button img{
+    max-width: 8rem;
+}
+
+button h2{
+    padding-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.btn-user-choice{
+    min-width: 12rem;
+    max-width: 12rem;
+    border-radius: 15%; 
+}
+
+mat-card{
+    display: flex;
+    align-items: center;
+    background-color: aliceblue;
+    max-width: 40rem;
+    min-width: 40rem;
+}
+
+mat-card-title{
+    font-size: 2rem;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+mat-card-content{
+    display: flex;
+    justify-content: space-between;
+}

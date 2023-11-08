@@ -2,9 +2,10 @@ import { Address } from "./address";
 import {User} from "./user";
 
 export class Student extends User{
-  constructor(id: number,
+  constructor(id: string,
               email: string,
               hashedPassword: string,
+              logged: boolean,
               private _name: string,
               private _fatherName: string,
               private _motherName: string,
@@ -14,7 +15,7 @@ export class Student extends User{
               private _gender: string,
               private _idCard?: string,
               private _cpf?: string) {
-    super(id, email, hashedPassword)
+    super(id, email, hashedPassword, logged)
   }
 
   get name(): string {

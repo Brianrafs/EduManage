@@ -4,9 +4,10 @@ import {User} from "./user";
 
 export class Guardian extends User{
 
-  constructor(id: number,
+  constructor(id: string,
               email: string,
               hashedPassword: string,
+              logged: boolean,
               private _fullName: string,
               private _idCard: string,
               private _cpf: string,
@@ -15,7 +16,7 @@ export class Guardian extends User{
               private _gender: string,
               private _address: Address,
               private _dependentStudents: Student[]) {
-    super(id, email, hashedPassword)
+      super(id, email, hashedPassword, logged)
   }
 
   get fullName(): string {
