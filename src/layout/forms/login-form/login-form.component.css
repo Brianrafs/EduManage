@@ -1,0 +1,49 @@
+.background{
+    background-image: url(src\assets\img\background.jpeg);
+    background-size: cover;
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.loginCard{
+    background-color: aliceblue;
+    max-width: 25em;
+    min-width: 25em;
+    display: flex;
+    align-items: center;
+    padding-top: 1em;
+}
+
+mat-card-title{
+    margin-bottom: 1em;
+    font-size: 2rem;
+}
+
+mat-form-field{
+    max-width: 100%;
+    min-width: 100%;
+}
+
+mat-card-footer{
+    margin-bottom: 1.5em;
+    min-width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+mat-card-footer p{
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    font-weight: 500;
+}
