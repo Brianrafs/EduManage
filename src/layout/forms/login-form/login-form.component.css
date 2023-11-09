@@ -1,6 +1,5 @@
 .background{
-    background-image: url(src\assets\img\background.jpeg);
-    background-size: cover;
+    background-color: black;
     min-width: 100%;
     min-height: 100%;
     display: flex;
