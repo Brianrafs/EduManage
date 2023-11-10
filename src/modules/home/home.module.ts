@@ -9,4 +9,4 @@ import { LayoutModule } from 'src/layout/layout.module';
         LayoutModule
     ],
 })
-export class AppModule { }
+export class homeScreenComponent { }
