@@ -1,5 +1,5 @@
 .container{
-    background-color: black;
+    background-color: var(--black-primary);
     min-width: 100%;
     min-height: 100%;
     display: flex;
@@ -26,7 +26,7 @@ button h2{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #673ab7;
+    background-color: var(--deep-purple);
     color: white;
     transition: transform 0.2s ease;
 }
@@ -42,7 +42,7 @@ button:active{
 mat-card{
     display: flex;
     align-items: center;
-    background-color: aliceblue;
+    background-color: var(--white-primary);
     max-width: 40rem;
     min-width: 40rem;
     min-height: 19rem;

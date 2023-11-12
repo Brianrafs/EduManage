@@ -1,5 +1,5 @@
 .background{
-    background-color: black;
+    background-color: var(--black-primary);
     min-width: 100%;
     min-height: 100%;
     display: flex;
