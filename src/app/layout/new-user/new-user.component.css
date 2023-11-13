@@ -1,0 +1,65 @@
+.container{
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button img{
+    max-width: 5rem;
+    margin-top: 1rem;
+}
+
+button h2{
+    padding-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.btn-user-choice{
+    min-width: 10rem;
+    max-width: 10rem;
+    max-height: 10rem;
+    margin-bottom: 1em;
+    border-radius: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--deep-purple);
+    color: white;
+    transition: transform 0.2s ease;
+}
+
+button:hover{
+    transform: scale(1.05)
+}
+
+button:active{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+mat-card{
+    display: flex;
+    align-items: center;
+    background-color: var(--white-primary);
+    max-width: 40rem;
+    min-width: 40rem;
+    min-height: 19rem;
+    border-radius: 15px;
+}
+
+mat-card-title{
+    font-size: 2rem;
+    margin-bottom: 1.5em;
+    margin-top: 0.5em;
+}
+
+mat-card-content{
+    display: flex;
+    justify-content: space-evenly;
+    min-width: 100%
+}
+
+.mat-mdc-card-content>:last-child:not(.mat-mdc-card-footer){
+    margin-bottom: auto;
+}

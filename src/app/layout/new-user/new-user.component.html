@@ -1,5 +1,5 @@
 
-<div class="container" [@popupAnimation]>
+<div class="container">
     <mat-card>
         <mat-card-title>Quem você está cadastrando?</mat-card-title>
         <mat-card-content>
@@ -7,7 +7,7 @@
                 <img src=".\assets\icons\teacher.svg">
                 <h2>Professor</h2>
             </button>
-            <button class="btn-user-choice">
+            <button class="btn-user-choice" (click)="navigateToRegisterGuardian()">
                 <img src=".\assets\icons\guardians.svg">
                 <h2>Responsável</h2>
             </button>

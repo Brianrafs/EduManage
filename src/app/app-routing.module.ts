@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MaintenanceComponent } from './guardian/maintenance/maintenance.component';
-import { ListingComponent } from './guardian/listing/listing.component';
+import {ListingComponent} from "./modules/guardian/listing/listing.component";
+import {MaintenanceComponent} from "./modules/guardian/maintenance/maintenance.component";
+import { NewUserComponent } from './layout/new-user/new-user.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
     path: "edit-guardian/:id",
     component: MaintenanceComponent
   },
+  {
+    path:"new-user",
+    component: NewUserComponent
+  }
 ];
 
 @NgModule({

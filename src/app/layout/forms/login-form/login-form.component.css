@@ -9,7 +9,7 @@
 
 
 .loginCard{
-    background-color: aliceblue;
+    background-color: var(--white-primary);
     max-width: 25em;
     min-width: 25em;
     display: flex;

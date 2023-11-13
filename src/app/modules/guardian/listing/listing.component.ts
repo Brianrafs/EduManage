@@ -22,7 +22,7 @@ export class ListingComponent implements OnInit {
     );
   }
 
-  delete(guardianToRemove: Guardian): void {
+  remover(guardianToRemove: Guardian): void {
     this.guardianService.delete(guardianToRemove).subscribe( guardianRemoved => {
         console.log('Responsável removido');
       const idxToRemove = this.guardians.findIndex(guardian =>
@@ -37,14 +37,14 @@ export class ListingComponent implements OnInit {
 
   }
 
-  //search(name: string) {
-   // if (name.length == 0) {
-    //  this.guardianSearch = [];
-   //// }
-    //this.guardians.forEach(guardian => {
-      //if (guardian.fullName.startsWith(name)) {
-        //this.guardianSearch.push(guardian);
-      //}
-    //});
-  //}
+  /* pesquisar(name: string) {
+    if (name.length == 0) {
+      this.guardianSearch = [];
+    }
+    this.guardians.forEach(guardian => {
+      if (guardian.fullName.startsWith(name)) {
+        this.guardianSearch.push(guardian);
+      }
+    });
+  } */
 }

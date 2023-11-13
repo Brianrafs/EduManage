@@ -11,9 +11,9 @@ import { GuardianService } from 'src/app/shared/services/guardian.service';
 })
 export class MaintenanceComponent {
   readonly REGISTER_BUTTON_NAME = 'Register';
-  readonly UPDATE_BUTTON_NAME = 'Salvar';
+  readonly UPDATE_BUTTON_NAME = 'Save';
   guardianTreatment: Guardian;
-  emptyAddress= new Address('','','','','')
+  emptyAddress = new Address('', '', '', '', '');
   errorMessage = '';
   isRegistering = true;
   buttonName = this.REGISTER_BUTTON_NAME;
@@ -22,18 +22,26 @@ export class MaintenanceComponent {
     const editId = this.activatedRoute.snapshot.params['id'];
     if (editId) {
       this.isRegistering = false;
-      this.guardianService.searchById(editId).subscribe(returnedGuardian => {
-        this.guardianTreatment = returnedGuardian;
-      });
+      this.guardianService.searchById(editId).subscribe(
+        returnedGuardian => {
+          this.guardianTreatment = returnedGuardian;
+        },
+        error => {
+          console.error('Error fetching guardian:', error);
+        }
+      );
     }
-    this.guardianTreatment = new Guardian('','','',false,'','','',new Date(),'','',this.emptyAddress,[]);
+    this.guardianTreatment = new Guardian('', '', '', false, '', '', '', new Date(), '', '', this.emptyAddress, []);
     this.buttonName = this.isRegistering ? this.REGISTER_BUTTON_NAME : this.UPDATE_BUTTON_NAME;
   }
 
   register(): void {
-    this.guardianService.add(this.guardianTreatment).subscribe(
-      addGuardian => {
-        console.log(addGuardian);
+    this.guardianService.register(this.guardianTreatment).subscribe(
+      addedGuardian => {
+        console.log('Guardian added:', addedGuardian);
+      },
+      error => {
+        console.error('Error adding guardian:', error);
       }
     );
   }

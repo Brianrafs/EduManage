@@ -1,11 +1,10 @@
-import { User } from "./user";
-
-export class Manager extends User{
-    constructor(private _nick: string,
-                id: string,
-                email: string,
-                hashedPassword: string,
-                logged: boolean){
-        super(id, email, hashedPassword, logged)
+/* import { User } from "./user";
+ */
+export class Manager{
+    constructor(public nick: string,
+                public id: string,
+                public email: string,
+                public hashedPassword: string,
+                public logged: boolean){
     }
 }
