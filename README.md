@@ -1,27 +1,35 @@
-# EduManager2
+# Management System for Dance Studios
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.8.
+This is the official repository of the Dance Studio Management System, an Angular and TypeScript application developed to simplify the management of Dance Studios.
 
-## Development server
+## Overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The Dance Studio Management System is a complete solution that offers registration, monthly fee payment and trial class scheduling resources for students and administrators. It is an essential tool for improving the operational efficiency of dance studios.
 
-## Code scaffolding
+## Versioning Table
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Here is our versioning table to track project versions:
 
-## Build
+| Version | Description |
+|-----------|-----------|
+| v1.0.0 | Initial Launch - Enrollment |
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## For Developers
 
-## Running unit tests
+If you are a developer and want to contribute to this project, please follow these steps:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Clone this repository.
+2. Install dependencies using `npm install`.
+3. Start the development server with `ng serve`.
+4. Contribute your code.
+5. Create a Pull Request and describe your changes.
 
-## Running end-to-end tests
+Be sure to follow code and documentation guidelines to maintain project consistency.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Contact
 
-## Further help
+If you have any questions or suggestions, please contact us at [brianrafs.contato@gmail.com](mailto:brianrafs.contato@gmail.com).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+
+**Thank you for joining us on this development journey!** 🚀
