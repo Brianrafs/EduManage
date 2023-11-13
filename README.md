@@ -12,7 +12,8 @@ Here is our versioning table to track project versions:
 
 | Version | Description |
 |-----------|-----------|
-| v1.0.0 | Initial Launch - Enrollment |
+| alpha v1.0.0 | Initial Launch - Enrollment |
+| alpha v1.2.1 | Simple CRUD of entities |
 
 ## For Developers
 
