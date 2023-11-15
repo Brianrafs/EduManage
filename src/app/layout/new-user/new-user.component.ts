@@ -10,14 +10,14 @@ export class NewUserComponent {
   constructor(private router: Router) { }
   
   navigateToRegisterGuardian(): void {
-    this.router.navigate(['/register-guardian']);
+    this.router.navigate(['register-guardian']);
   }
   
   navigateToRegisterProfessor(): void {
-    this.router.navigate(['/register-professor']);
+    this.router.navigate(['register-professor']);
   }
   
   navigateToRegisterStudent(): void {
-    this.router.navigate(['/register-student']);
+    this.router.navigate(['register-student']);
   }
 }

@@ -7,7 +7,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatMenuModule} from "@angular/material/menu";
-
+import { FormsModule } from '@angular/forms';
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -20,7 +21,9 @@ import {MatMenuModule} from "@angular/material/menu";
     MatButtonModule,
     MatCardModule,
     MatBadgeModule,
-    MatMenuModule
+    MatMenuModule,
+    FormsModule,
+    MatTableModule
   ],
   exports: [
     MatFormFieldModule,

@@ -31,7 +31,7 @@ export class MaintenanceComponent {
   }
 
   register(): void {
-    this.guardianService.add(this.guardianTreatment).subscribe(
+    this.guardianService.register(this.guardianTreatment).subscribe(
       addGuardian => {
         console.log(addGuardian);
       }
