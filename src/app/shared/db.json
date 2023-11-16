@@ -12,23 +12,125 @@
     },
     {
       "id": 2,
-      "email": "",
-      "fullName": "",
-      "idCard": "",
-      "cpf": "",
-      "dateOfBirth": "2023-11-16T14:17:17.122Z",
-      "phoneNumber": "",
-      "gender": ""
+      "email": "person1@example.com",
+      "fullName": "Juan Docinho",
+      "idCard": "1234567890",
+      "cpf": "98765432109",
+      "dateOfBirth": "01011990",
+      "phoneNumber": "1234567890",
+      "gender": "M"
     },
     {
       "id": 3,
-      "email": "aaaaaaaaa",
-      "fullName": "aaaaaaaa",
-      "idCard": "aaa7891891",
-      "cpf": "87818818",
-      "dateOfBirth": "2003-06-03T03:00:00.000Z",
-      "phoneNumber": "119819181",
+      "email": "person2@example.com",
+      "fullName": "Jane Smith",
+      "idCard": "2345678901",
+      "cpf": "87654321098",
+      "dateOfBirth": "02021985",
+      "phoneNumber": "2345678901",
+      "gender": "F"
+    },
+    {
+      "id": 5,
+      "email": "person31@example.com",
+      "fullName": "Carlos Silva",
+      "idCard": "1230987654",
+      "cpf": "87654321012",
+      "dateOfBirth": "15051992",
+      "phoneNumber": "1122334455",
       "gender": "M"
+    },
+    {
+      "id": 6,
+      "email": "person32@example.com",
+      "fullName": "Ana Oliveira",
+      "idCard": "5678901234",
+      "cpf": "54321098765",
+      "dateOfBirth": "22031988",
+      "phoneNumber": "2233445566",
+      "gender": "F"
+    },
+    {
+      "id": 7,
+      "email": "person33@example.com",
+      "fullName": "Ricardo Santos",
+      "idCard": "6789012345",
+      "cpf": "43210987654",
+      "dateOfBirth": "09121975",
+      "phoneNumber": "3344556677",
+      "gender": "M"
+    },
+    {
+      "id": 8,
+      "email": "person34@example.com",
+      "fullName": "Mariana Lima",
+      "idCard": "7890123456",
+      "cpf": "32109876543",
+      "dateOfBirth": "04101982",
+      "phoneNumber": "4455667788",
+      "gender": "F"
+    },
+    {
+      "id": 9,
+      "email": "person35@example.com",
+      "fullName": "Pedro Rocha",
+      "idCard": "8901234567",
+      "cpf": "21098765432",
+      "dateOfBirth": "28021970",
+      "phoneNumber": "5566778899",
+      "gender": "M"
+    },
+    {
+      "id": 10,
+      "email": "person36@example.com",
+      "fullName": "Camila Oliveira",
+      "idCard": "9012345678",
+      "cpf": "10987654321",
+      "dateOfBirth": "18081995",
+      "phoneNumber": "6677889900",
+      "gender": "F"
+    },
+    {
+      "id": 11,
+      "email": "person37@example.com",
+      "fullName": "Lucas Pereira",
+      "idCard": "3456789012",
+      "cpf": "98765432109",
+      "dateOfBirth": "11051989",
+      "phoneNumber": "7788990011",
+      "gender": "M"
+    },
+    {
+      "id": 12,
+      "email": "person38@example.com",
+      "fullName": "Fernanda Souza",
+      "idCard": "4567890123",
+      "cpf": "87654321098",
+      "dateOfBirth": "19071984",
+      "phoneNumber": "8899001122",
+      "gender": "F"
+    },
+    {
+      "id": 13,
+      "email": "person39@example.com",
+      "fullName": "Gustavo Silva",
+      "idCard": "5678901234",
+      "cpf": "76543210987",
+      "dateOfBirth": "25031978",
+      "phoneNumber": "0011223344",
+      "gender": "M"
+    },
+    {
+      "id": 14,
+      "email": "person40@example.com",
+      "fullName": "Juliana Santos",
+      "idCard": "6789012345",
+      "cpf": "65432109876",
+      "dateOfBirth": "07121991",
+      "phoneNumber": "1122334455",
+      "gender": "F"
     }
-  ]
+  ],
+  "students": [],
+  "professors": []
 }

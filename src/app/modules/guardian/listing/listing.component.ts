@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Guardian } from 'src/app/shared/model/guardian';
 import { GuardianService } from 'src/app/shared/services/guardian.service';
+import {MatTableDataSource} from "@angular/material/table";
+import { MatPaginator } from '@angular/material/paginator';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listing',
@@ -8,43 +12,48 @@ import { GuardianService } from 'src/app/shared/services/guardian.service';
   styleUrls: ['./listing.component.css']
 })
 export class ListingComponent implements OnInit {
-  guardians: Guardian[] = [];
-  guardianSearch: Array<Guardian> = [];
+  
+  dataSource: MatTableDataSource<Guardian>;
 
-  constructor(private guardianService: GuardianService) {
+  displayedColumns: string[] = ['Nome', 'Email', 'Telefone', 'Tipo', 'Ações'];
+  
+  @ViewChild(MatPaginator) paginator!: MatPaginator
+
+  ngAfterViewInit() {
+    if (this.paginator) {
+      this.dataSource.paginator = this.paginator;
+    }
+  }
+  constructor(private guardianService: GuardianService, private _snackBar: MatSnackBar, private router: Router) {
+    this.dataSource = new MatTableDataSource<Guardian>();
   }
 
   ngOnInit() {
-    this.guardianService.list().subscribe(guardiansReturned =>
-      {
-        this.guardians = guardiansReturned;
-      }
-    );
+    this.loadGuardians();
   }
 
-  remover(guardianToRemove: Guardian): void {
-    this.guardianService.delete(guardianToRemove).subscribe( guardianRemoved => {
-        console.log('Responsável removido');
-      const idxToRemove = this.guardians.findIndex(guardian =>
-        guardian.id === guardianToRemove.id);
-
-      if (idxToRemove >= 0) {
-        this.guardians.splice(idxToRemove, 1);
-      }
-
-      }
-    );
-
-  }
-
-  /* pesquisar(name: string) {
-    if (name.length == 0) {
-      this.guardianSearch = [];
-    }
-    this.guardians.forEach(guardian => {
-      if (guardian.fullName.startsWith(name)) {
-        this.guardianSearch.push(guardian);
-      }
+  loadGuardians(): void {
+    this.guardianService.list().subscribe(guardiansReturned => {
+      this.dataSource = new MatTableDataSource<Guardian>(guardiansReturned);
+      this.dataSource.paginator = this.paginator;
     });
-  } */
+  }
+
+  remove(guardianToRemove: Guardian): void {
+    this.guardianService.delete(guardianToRemove).subscribe( guardianRemoved => {
+      this._snackBar.open('Responsável removido', 'Fechar', { duration: 5000 });
+      this.loadGuardians();
+    });
+  }
+
+  filter(evento: Event): void {
+    const texto = (evento.target as HTMLInputElement).value;
+    this.dataSource.filter = texto;
+  }
+
+  edit(id: string): void {
+    console.log('id');
+    console.log(id);
+    this.router.navigate(['edit-guardian', id]);
+  }
 }

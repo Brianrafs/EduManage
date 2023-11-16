@@ -1,0 +1,27 @@
+.mat-elevation-z8 {
+    margin: 20px;
+  }
+  
+  mat-form-field {
+    padding: 16px;
+  }
+  
+  table {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    text-align: left;
+  }
+  
+  th {
+    background-color: var(--white-primary);
+  }
+  
+  .mat-paginator-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  

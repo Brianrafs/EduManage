@@ -9,20 +9,20 @@
         </mat-card-subtitle>
         <mat-card-content>
             <mat-form-field appearance="outline">
-            <mat-label>Nome Completo*</mat-label>
-            <input matInput [(ngModel)]="guardianTreatment.fullName">
+                <mat-label>Nome Completo</mat-label>
+                <input matInput [(ngModel)]="guardianTreatment.fullName" required>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Email</mat-label>
-                <input matInput placeholder="example@example.com" [(ngModel)]="guardianTreatment.email">
+                <input matInput placeholder="example@example.com" [(ngModel)]="guardianTreatment.email" required>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>RG</mat-label>
                 <input matInput [(ngModel)]="guardianTreatment.idCard">
             </mat-form-field>
             <mat-form-field appearance="outline">
-                <mat-label>CPF*</mat-label>
-                <input matInput [(ngModel)]="guardianTreatment.cpf">
+                <mat-label>CPF</mat-label>
+                <input matInput [(ngModel)]="guardianTreatment.cpf" (ngModelChange)="guardianTreatment.cpf = cpfFormat($event)" maxlength="14" required>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Data de Nascimento</mat-label>
@@ -33,7 +33,7 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Número de Telefone</mat-label>
-                <input matInput placeholder="Placeholder" [(ngModel)]="guardianTreatment.phoneNumber">
+                <input matInput placeholder="(00) 00000-0000" [(ngModel)]="guardianTreatment.phoneNumber" (ngModelChange)="guardianTreatment.phoneNumber = phoneFormat($event)" maxlength="15" required>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Gênero</mat-label>
