@@ -1,13 +1,34 @@
 {
-  "users":[
+  "guardians": [
     {
-      "manager":
-        {
-          "nick": "admin",
-          "email": "admin@admin.com",
-          "hashedPassword":""
-        }
+      "id": 1,
+      "email": "brianrafs@gmail.com",
+      "fullName": "Brian Rafael Azevedo Trajano",
+      "idCard": "2115611945",
+      "cpf": "1115549849",
+      "dateOfBirth": "06092003",
+      "phoneNumber": "83988294333",
+      "gender": "M"
+    },
+    {
+      "id": 2,
+      "email": "",
+      "fullName": "",
+      "idCard": "",
+      "cpf": "",
+      "dateOfBirth": "2023-11-16T14:17:17.122Z",
+      "phoneNumber": "",
+      "gender": ""
+    },
+    {
+      "id": 3,
+      "email": "aaaaaaaaa",
+      "fullName": "aaaaaaaa",
+      "idCard": "aaa7891891",
+      "cpf": "87818818",
+      "dateOfBirth": "2003-06-03T03:00:00.000Z",
+      "phoneNumber": "119819181",
+      "gender": "M"
     }
   ]
-  
 }

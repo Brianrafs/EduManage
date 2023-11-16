@@ -31,6 +31,12 @@ export class GuardianService {
     );
   }
 
+  update(guardian: Guardian): Observable<Guardian> {
+    return this.httpClient.put<Guardian>(`${this.GUARDIAN_API}/${guardian.id}`, guardian).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   searchById(id: string): Observable<Guardian> {
     return this.httpClient.get<Guardian>(`${this.GUARDIAN_API}/${id}`).pipe(
       catchError(this.handleError)

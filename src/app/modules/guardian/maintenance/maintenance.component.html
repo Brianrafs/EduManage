@@ -1,3 +1,47 @@
 <mat-card>
-    
+    <mat-card-title>
+        Cadastro de Responsável
+    </mat-card-title>
+    <mat-card-subtitle>
+        Campos com * são obrigatórios
+    </mat-card-subtitle>
+    <mat-card-content>
+        <mat-form-field appearance="outline">
+          <mat-label>Nome Completo*</mat-label>
+          <input matInput [(ngModel)]="guardianTreatment.fullName">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="example@example.com" [(ngModel)]="guardianTreatment.email">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>RG</mat-label>
+            <input matInput [(ngModel)]="guardianTreatment.idCard">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>CPF*</mat-label>
+            <input matInput [(ngModel)]="guardianTreatment.cpf">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="guardianTreatment.dateOfBirth">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Número de Telefone</mat-label>
+            <input matInput placeholder="Placeholder" [(ngModel)]="guardianTreatment.phoneNumber">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Gênero</mat-label>
+            <mat-select [(ngModel)]="guardianTreatment.gender">
+              <mat-option value="F">Feminino</mat-option>
+              <mat-option value="M">Masculino</mat-option>
+            </mat-select>
+          </mat-form-field>
+    </mat-card-content>
+    <mat-card-footer>
+        <button mat-raised-button color="primary" (click)="register()">{{buttonName}}</button>
+    </mat-card-footer>
 </mat-card>

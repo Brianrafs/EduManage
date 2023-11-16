@@ -9,6 +9,9 @@ import {MatBadgeModule} from "@angular/material/badge";
 import {MatMenuModule} from "@angular/material/menu";
 import { FormsModule } from '@angular/forms';
 import {MatTableModule} from "@angular/material/table";
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import {MatTableModule} from "@angular/material/table";
     MatBadgeModule,
     MatMenuModule,
     FormsModule,
-    MatTableModule
+    MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   exports: [
     MatFormFieldModule,
@@ -32,7 +38,11 @@ import {MatTableModule} from "@angular/material/table";
     MatButtonModule,
     MatCardModule,
     MatBadgeModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    FormsModule
   ]
 })
 export class MaterialModule { }

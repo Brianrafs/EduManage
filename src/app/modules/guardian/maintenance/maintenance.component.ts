@@ -10,10 +10,9 @@ import { GuardianService } from 'src/app/shared/services/guardian.service';
   styleUrls: ['./maintenance.component.css']
 })
 export class MaintenanceComponent {
-  readonly REGISTER_BUTTON_NAME = 'Register';
-  readonly UPDATE_BUTTON_NAME = 'Save';
+  readonly REGISTER_BUTTON_NAME = 'Cadastrar';
+  readonly UPDATE_BUTTON_NAME = 'Salvar';
   guardianTreatment: Guardian;
-  emptyAddress = new Address('', '', '', '', '');
   errorMessage = '';
   isRegistering = true;
   buttonName = this.REGISTER_BUTTON_NAME;
@@ -31,18 +30,29 @@ export class MaintenanceComponent {
         }
       );
     }
-    this.guardianTreatment = new Guardian('', '', '', false, '', '', '', new Date(), '', '', this.emptyAddress, []);
+    this.guardianTreatment = new Guardian('', '', '', '', '', new Date(), '', '');
     this.buttonName = this.isRegistering ? this.REGISTER_BUTTON_NAME : this.UPDATE_BUTTON_NAME;
   }
 
   register(): void {
-    this.guardianService.register(this.guardianTreatment).subscribe(
-      addedGuardian => {
-        console.log('Guardian added:', addedGuardian);
-      },
-      error => {
-        console.error('Error adding guardian:', error);
-      }
-    );
+    if(this.isRegistering){
+      this.guardianService.register(this.guardianTreatment).subscribe(
+        addedGuardian => {
+          console.log('Guardian added:', addedGuardian);
+        },
+        error => {
+          console.error('Error adding guardian:', error);
+        }
+      );
+    } else {
+      this.guardianService.update(this.guardianTreatment).subscribe(
+        updatedGuardian => {
+          console.log('Guardian updated:', updatedGuardian);
+        },
+        error => {
+          console.error('Error updating guardian:', error);
+        }
+      );
+    }
   }
 }
