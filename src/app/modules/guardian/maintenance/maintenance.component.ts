@@ -65,7 +65,7 @@ export class MaintenanceComponent {
       this.guardianService.update(this.guardianTreatment).subscribe(
         updatedGuardian => {
           console.log('Guardian updated:', updatedGuardian);
-          this._snackBar.open('Responsável atualizado com sucesso', 'Fechar', { duration: 5000 });
+          this._snackBar.open('Responsável atualizado com sucesso', 'Ok', { duration: 5000 });
           this.router.navigate(['/listing-guardians'])
         },
         error => {

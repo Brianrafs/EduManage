@@ -20,7 +20,7 @@ import { RouterModule } from '@angular/router';
   exports:[
     NewUserComponent,
     MaterialModule,
-    MenuComponent
+    MenuComponent,
   ]
 })
 export class LayoutModule { }
