@@ -3,7 +3,7 @@
     {
       "id": 1,
       "email": "brianrafs@gmail.com",
-      "fullName": "Brian Rafael Azevedo Trajano",
+      "fullName": "Brian Rafael TESTE 2",
       "idCard": "2115611945",
       "cpf": "1115549849",
       "dateOfBirth": "06092003",
@@ -19,16 +19,6 @@
       "dateOfBirth": "01011990",
       "phoneNumber": "1234567890",
       "gender": "M"
-    },
-    {
-      "id": 3,
-      "email": "person2@example.com",
-      "fullName": "Jane Smith",
-      "idCard": "2345678901",
-      "cpf": "87654321098",
-      "dateOfBirth": "02021985",
-      "phoneNumber": "2345678901",
-      "gender": "F"
     },
     {
       "id": 5,
@@ -129,6 +119,26 @@
       "dateOfBirth": "07121991",
       "phoneNumber": "1122334455",
       "gender": "F"
+    },
+    {
+      "id": 15,
+      "email": "brianxdgmr@gmail.com",
+      "fullName": "Brian Rafael",
+      "idCard": "187948154151",
+      "cpf": "113.155.884-64",
+      "dateOfBirth": "2001-06-12T03:00:00.000Z",
+      "phoneNumber": "(44) 77459-9855",
+      "gender": "M"
+    },
+    {
+      "id": 16,
+      "email": "brianffkkd@maskdals.com",
+      "fullName": "Brian Rafael",
+      "idCard": "181818111",
+      "cpf": "133.288.884-95",
+      "dateOfBirth": "2001-05-08T03:00:00.000Z",
+      "phoneNumber": "(51) 14477-1811",
+      "gender": "M"
     }
   ],
   "students": [],

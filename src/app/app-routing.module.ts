@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import {ListingComponent} from "./modules/guardian/listing/listing.component";
 import {MaintenanceComponent} from "./modules/guardian/maintenance/maintenance.component";
 import { NewUserComponent } from './layout/new-user/new-user.component';
-import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
