@@ -15,7 +15,7 @@
     "env": {
       "YOUR_ENV_VARIABLE": "value"
     },
-    "build": {
+    "functions": {
       "maxLambdaSize": "2mb"
     }
   }
