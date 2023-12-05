@@ -1,49 +1,43 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
-import {from, map, Observable} from "rxjs";
-import {Guardian} from "../model/guardian";
-import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
+import { Observable, from } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { Guardian } from '../model/guardian';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AlunoFirestoreService {
-
-  colecaoAlunos: AngularFirestoreCollection<Guardian>;
-  NOME_COLECAO = 'guardians';
+export class GuardianFirestoreService {
+  guardiansCollection: AngularFirestoreCollection<Guardian>;
+  COLLECTION_NAME = 'guardians';
 
   constructor(private afs: AngularFirestore) {
-    this.colecaoAlunos = afs.collection(this.NOME_COLECAO);
+    this.guardiansCollection = afs.collection(this.COLLECTION_NAME);
   }
 
   list(): Observable<Guardian[]> {
-    return this.colecaoAlunos.valueChanges({idField: 'id'});
+    return this.guardiansCollection.valueChanges({ idField: 'id' });
   }
 
-  cadastrar(aluno: Guardian): Observable<Guardian> {
-    delete aluno.id;
-    return from(this.colecaoAlunos.add({...aluno}));
+  register(guardian: Guardian): Observable<Guardian> {
+    delete guardian.id;
+    return from(this.guardiansCollection.add({ ...guardian }));
   }
 
-  remover(aluno: Guardian): Observable<any> {
-    return from(this.colecaoAlunos.doc(aluno.id).delete());
+  delete(guardian: Guardian): Observable<any> {
+    return from(this.guardiansCollection.doc(guardian.id).delete());
   }
 
-  pesquisarPorId(id: string): Observable<Guardian> {
-    return this.colecaoAlunos.doc(id).get().pipe(map(document =>
-      new Guardian(id, document.data())));
+  searchById(id: string): Observable<Guardian | undefined> {
+    return this.guardiansCollection.doc(id).get().pipe(
+      map(document => {
+        const data = document.data();
+        return data ? { id, ...data } as Guardian : undefined;
+      })
+    );
   }
 
-  atualizar(aluno: Guardian): Observable<void> {
-    return from(this.colecaoAlunos.doc(aluno.id).update({...aluno}));
-  }
-
-  pesquisarPorMatricula(matricula: string): Observable<Guardian[]> {
-    let alunoPorMatricula: AngularFirestoreCollection<Guardian>;
-    alunoPorMatricula = this.afs.collection(this.NOME_COLECAO, ref =>
-      ref.where('matricula', '==', matricula));
-    return alunoPorMatricula.valueChanges();
+  update(guardian: Guardian): Observable<void> {
+    return from(this.guardiansCollection.doc(guardian.id).update({ ...guardian }));
   }
 }
-

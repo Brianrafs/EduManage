@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from 'src/app/shared/model/address';
 import { Guardian } from 'src/app/shared/model/guardian';
+import { GuardianFirestoreService } from 'src/app/shared/services/guardian-firestore.service';
 import { GuardianService } from 'src/app/shared/services/guardian.service';
 
 @Component({
@@ -18,13 +19,13 @@ export class MaintenanceComponent {
   isRegistering = true;
   buttonName = this.REGISTER_BUTTON_NAME;
 
-  constructor(private guardianService: GuardianService, private _snackBar: MatSnackBar, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private guardianService: GuardianFirestoreService, private _snackBar: MatSnackBar, private activatedRoute: ActivatedRoute, private router: Router) {
     const editId = this.activatedRoute.snapshot.params['id'];
     if (editId) {
       this.isRegistering = false;
       this.guardianService.searchById(editId).subscribe(
         returnedGuardian => {
-          this.guardianTreatment = returnedGuardian;
+          this.guardianTreatment = returnedGuardian as Guardian;
         },
         error => {
           console.error('Error fetching guardian:', error);
@@ -37,25 +38,34 @@ export class MaintenanceComponent {
 
   register(): void {
     if (!this.isFormValid()) {
-      alert('Preencha todos os campos obrigatórios.');
+      this._snackBar.open('Preencha todos os campos obrigatórios', 'Fechar', { duration: 5000 })
       return;
     }
-
+  
     const today = new Date();
-    const birthDate = new Date(this.guardianTreatment.dateOfBirth);
-    const age = today.getFullYear() - birthDate.getFullYear();
-
-    if (age < 18) {
-      alert('O responsável não pode ter menos de 18 anos.');
+    const birthDate = this.guardianTreatment.dateOfBirth ? new Date(this.guardianTreatment.dateOfBirth) : undefined;
+  
+    if (!birthDate) {
+      this._snackBar.open('Informe uma data de nascimento válida', 'Fechar', { duration: 5000 });
       return;
     }
-
+  
+    const age = today.getFullYear() - birthDate.getFullYear() - (
+      today.getMonth() < birthDate.getMonth() || 
+      (today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate()) ? 1 : 0
+    );
+  
+    if (age < 18) {
+      this._snackBar.open('O responsável não pode ser menor de 18 anos', 'Ok', { duration: 5000 });
+      return;
+    }
+  
     if(this.isRegistering){
       this.guardianService.register(this.guardianTreatment).subscribe(
         addedGuardian => {
           console.log('Guardian added:', addedGuardian);
           this._snackBar.open('Responsável cadastrado com sucesso', 'Fechar', { duration: 5000 });
-          this.router.navigate(['/listing-guardians'])
+          this.router.navigate(['/listing-guardians']);
         },
         error => {
           console.error('Error adding guardian:', error);
@@ -66,7 +76,7 @@ export class MaintenanceComponent {
         updatedGuardian => {
           console.log('Guardian updated:', updatedGuardian);
           this._snackBar.open('Responsável atualizado com sucesso', 'Ok', { duration: 5000 });
-          this.router.navigate(['/listing-guardians'])
+          this.router.navigate(['/listing-guardians']);
         },
         error => {
           console.error('Error updating guardian:', error);
@@ -74,6 +84,7 @@ export class MaintenanceComponent {
       );
     }
   }
+  
 
   isFormValid(): boolean {
     return (
@@ -90,9 +101,9 @@ export class MaintenanceComponent {
     return cpf;
   }
 
-  phoneFormat(telefone: string): string {
-    telefone = telefone.replace(/\D/g, '');
-    telefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
-    return telefone;
+  phoneFormat(phone: string): string {
+    phone = phone.replace(/\D/g, '');
+    phone = phone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+    return phone;
   }
 }

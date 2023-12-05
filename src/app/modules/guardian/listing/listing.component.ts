@@ -5,6 +5,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import { MatPaginator } from '@angular/material/paginator';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { GuardianFirestoreService } from 'src/app/shared/services/guardian-firestore.service';
 
 @Component({
   selector: 'app-listing',
@@ -24,7 +25,7 @@ export class ListingComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
     }
   }
-  constructor(private guardianService: GuardianService, private _snackBar: MatSnackBar, private router: Router) {
+  constructor(private guardianService: GuardianFirestoreService, private _snackBar: MatSnackBar, private router: Router) {
     this.dataSource = new MatTableDataSource<Guardian>();
   }
 

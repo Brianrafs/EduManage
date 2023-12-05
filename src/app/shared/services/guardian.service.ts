@@ -3,13 +3,14 @@ import { HttpClient } from "@angular/common/http";
 import { Guardian } from "../model/guardian";
 import { Observable, throwError } from "rxjs";
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GuardianService {
 
-  GUARDIAN_API = 'http://localhost:3000/guardians';
+  GUARDIAN_API = environment.URL_API + '/guardians';
 
   constructor(private httpClient: HttpClient) { }
 

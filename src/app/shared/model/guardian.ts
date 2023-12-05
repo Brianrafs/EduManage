@@ -3,16 +3,34 @@ import { Student } from "./student";
 /* import { User } from "./user";
  */
 export class Guardian{
-  constructor(public id: string,
-    public email: string,
+    public id?: string;
+    public email?: string;
     // hashedPassword: string,
     // logged: boolean,
-    public fullName: string,
-    public idCard: string,
-    public cpf: string,
-    public dateOfBirth: Date,
-    public phoneNumber: string,
-    public gender: string,
-   /* dependentStudents: Student[] */) {
-}
+    public fullName?: string;
+    public idCard?: string;
+    public cpf?: string;
+    public dateOfBirth?: Date;
+    public phoneNumber?: string;
+    public gender?: string;
+   /* dependentStudents: Student[] */
+    
+    constructor(id?: string,
+      email?: string,
+      fullName?: string,
+      idCard?: string,
+      cpf?: string,
+      dateOfBirth?: Date,
+      phoneNumber?: string,
+      gender?: string,
+      guardian: Guardian = {} ) {
+    this.id = id;
+    this.email = guardian.email;
+    this.fullName = guardian.fullName; 
+    this.idCard = guardian.idCard;
+    this.cpf = guardian.cpf; 
+    this.dateOfBirth = guardian.dateOfBirth;
+    this.phoneNumber = guardian.phoneNumber;
+    this.gender = guardian.gender; 
+  }
 }
