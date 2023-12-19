@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Guardian } from 'src/app/shared/model/guardian';
-import { GuardianService } from 'src/app/shared/services/guardian.service';
 import {MatTableDataSource} from "@angular/material/table";
 import { MatPaginator } from '@angular/material/paginator';
-import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { GuardianFirestoreService } from 'src/app/shared/services/guardian-firestore.service';
+import {SnackMenssegerService} from "../../../shared/services/snack-mensseger.service";
 
 @Component({
   selector: 'app-listing',
@@ -13,11 +12,11 @@ import { GuardianFirestoreService } from 'src/app/shared/services/guardian-fires
   styleUrls: ['./listing.component.css']
 })
 export class ListingComponent implements OnInit {
-  
+
   dataSource: MatTableDataSource<Guardian>;
 
   displayedColumns: string[] = ['Nome', 'Email', 'Telefone', 'Tipo', 'Ações'];
-  
+
   @ViewChild(MatPaginator) paginator!: MatPaginator
 
   ngAfterViewInit() {
@@ -25,7 +24,7 @@ export class ListingComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
     }
   }
-  constructor(private guardianService: GuardianFirestoreService, private _snackBar: MatSnackBar, private router: Router) {
+  constructor(private guardianService: GuardianFirestoreService, private snackMenssegerService: SnackMenssegerService, private router: Router) {
     this.dataSource = new MatTableDataSource<Guardian>();
   }
 
@@ -42,19 +41,17 @@ export class ListingComponent implements OnInit {
 
   remove(guardianToRemove: Guardian): void {
     this.guardianService.delete(guardianToRemove).subscribe( guardianRemoved => {
-      this._snackBar.open('Responsável removido', 'Ok', { duration: 5000 });
+      this.snackMenssegerService.success('Responsável removido');
       this.loadGuardians();
     });
   }
 
-  filter(evento: Event): void {
-    const texto = (evento.target as HTMLInputElement).value;
-    this.dataSource.filter = texto;
+  filter(event: Event): void {
+    const text = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = text;
   }
 
   edit(id: string): void {
-    console.log('id');
-    console.log(id);
     this.router.navigate(['edit-guardian', id]);
   }
 }

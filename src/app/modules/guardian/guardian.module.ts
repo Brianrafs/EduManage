@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ListingComponent } from './listing/listing.component';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { LayoutModule } from 'src/app/layout/layout.module';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { LayoutModule } from 'src/app/layout/layout.module';
   ],
   imports: [
     CommonModule,
-    LayoutModule
+    LayoutModule,
+    ReactiveFormsModule
   ],
   exports:[
     ListingComponent,
