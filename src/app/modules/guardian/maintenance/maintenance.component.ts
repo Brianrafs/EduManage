@@ -38,7 +38,7 @@ export class MaintenanceComponent implements OnInit{
           this.fillFormWithGuardianTreatment();
         },
         error => {
-          console.error('Error fetching guardian:', error);
+          this.snackMenssegerService.error('Erro ao carregar responsável:'+error);
         }
       );
     } else {
@@ -102,16 +102,14 @@ export class MaintenanceComponent implements OnInit{
     if (this.isRegistering) {
       this.guardianService.register(formValues).subscribe(
         addedGuardian => {
-          console.log('Guardian added:', addedGuardian);
-          this.snackMenssegerService.success('Responsável cadastrado com sucesso');
+          this.snackMenssegerService.success('Responsável '+ addedGuardian + 'cadastrado com sucesso');
           this.router.navigate(['/listing-guardians']);
         },
         error => {
-          console.error('Error adding guardian:', error);
+          this.snackMenssegerService.error('Erro ao cadastrar responsável '+error);
         }
       );
     } else {
-      // Atualiza diretamente os valores do objeto guardianTreatment
       this.guardianTreatment.fullName = formValues.fullName;
       this.guardianTreatment.email = formValues.email;
       this.guardianTreatment.idCard = formValues.idCard;
@@ -122,12 +120,11 @@ export class MaintenanceComponent implements OnInit{
 
       this.guardianService.update(this.guardianTreatment).subscribe(
         updatedGuardian => {
-          console.log('Guardian updated:', updatedGuardian);
-          this.snackMenssegerService.success('Responsável atualizado com sucesso');
+          this.snackMenssegerService.success('Responsável '+updatedGuardian+' atualizado com sucesso');
           this.router.navigate(['/listing-guardians']);
         },
         error => {
-          console.error('Error updating guardian:', error);
+          this.snackMenssegerService.error('Erro ao atualizar responsável '+error);
         }
       );
     }
@@ -218,9 +215,5 @@ export class MaintenanceComponent implements OnInit{
     inputRg = inputRg.substring(0, 9);
     const formattedRg = this.rgFormat(inputRg);
     this.guardianForm.get('idCard')?.setValue(formattedRg, { emitEvent: false });
-  }
-
-  get f() {
-    return this.guardianForm.controls;
   }
 }

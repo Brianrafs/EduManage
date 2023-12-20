@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { LayoutModule } from 'src/layout/layout.module';
+//import { LayoutModule } from 'src/layout/layout.module';
 
 @NgModule({
   declarations: [
-    
+
   ],
     imports: [
-        LayoutModule
+        //LayoutModule
     ],
 })
 export class homeScreenComponent { }
