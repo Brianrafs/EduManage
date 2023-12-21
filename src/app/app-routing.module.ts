@@ -4,6 +4,7 @@ import {ListingComponent} from "./modules/guardian/listing/listing.component";
 import {MaintenanceComponent} from "./modules/guardian/maintenance/maintenance.component";
 import { NewUserComponent } from './layout/new-user/new-user.component';
 
+
 const routes: Routes = [
   {
     path: "listing-guardians",
@@ -11,10 +12,6 @@ const routes: Routes = [
   },
   {
     path: "register-guardian",
-    component: MaintenanceComponent
-  },
-  {
-    path: "edit-guardian/:id",
     component: MaintenanceComponent
   },
   {

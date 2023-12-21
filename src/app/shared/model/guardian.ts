@@ -2,7 +2,7 @@ import { Student } from "./student";
 /* import { Address } from "./address"; */
 /* import { User } from "./user";
  */
-export class Guardian{
+export class Guardian {
     public id?: string;
     public email?: string;
     public fullName?: string;
