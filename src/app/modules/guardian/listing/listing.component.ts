@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Guardian } from 'src/app/shared/model/guardian';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {Guardian} from 'src/app/shared/model/guardian';
 import {MatTableDataSource} from "@angular/material/table";
-import { MatPaginator } from '@angular/material/paginator';
-import { Router } from '@angular/router';
-import { GuardianFirestoreService } from 'src/app/shared/services/guardian-firestore.service';
+import {MatPaginator} from '@angular/material/paginator';
+import {Router} from '@angular/router';
+//import { GuardianFirestoreService } from 'src/app/shared/services/guardian-firestore.service';
 import {SnackMenssegerService} from "../../../shared/services/snack-mensseger.service";
+import {GuardianService} from "../../../shared/services/guardian.service";
 
 @Component({
   selector: 'app-listing',
@@ -24,7 +25,7 @@ export class ListingComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
     }
   }
-  constructor(private guardianService: GuardianFirestoreService, private snackMenssegerService: SnackMenssegerService, private router: Router) {
+  constructor(private guardianService: GuardianService, private snackMenssegerService: SnackMenssegerService, private router: Router) {
     this.dataSource = new MatTableDataSource<Guardian>();
   }
 
@@ -41,14 +42,13 @@ export class ListingComponent implements OnInit {
 
   remove(guardianToRemove: Guardian): void {
     this.guardianService.delete(guardianToRemove).subscribe( guardianRemoved => {
-      this.snackMenssegerService.success('Responsável removido');
+      this.snackMenssegerService.success('Responsável'+ guardianRemoved +' removido');
       this.loadGuardians();
     });
   }
 
   filter(event: Event): void {
-    const text = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = text;
+    this.dataSource.filter = (event.target as HTMLInputElement).value;
   }
 
   edit(id: string): void {

@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-//import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 //import { Address } from 'src/app/shared/model/address';
 import { Guardian } from 'src/app/shared/model/guardian';
-import { GuardianFirestoreService } from 'src/app/shared/services/guardian-firestore.service';
-//import { GuardianService } from 'src/app/shared/services/guardian.service';
- import {SnackMenssegerService} from "../../../shared/services/snack-mensseger.service";
- import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
+//import { GuardianFirestoreService } from 'src/app/shared/services/guardian-firestore.service';
+import {SnackMenssegerService} from "../../../shared/services/snack-mensseger.service";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {GuardianService} from "../../../shared/services/guardian.service";
 
 @Component({
   selector: 'app-maintenance',
@@ -22,7 +21,7 @@ export class MaintenanceComponent implements OnInit{
   guardianForm!: FormGroup;
 
   constructor(
-    private guardianService: GuardianFirestoreService,
+    private guardianService: GuardianService,
     private snackMenssegerService: SnackMenssegerService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
