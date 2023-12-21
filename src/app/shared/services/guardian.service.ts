@@ -15,33 +15,23 @@ export class GuardianService {
   constructor(private httpClient: HttpClient) { }
 
   list(): Observable<Guardian[]> {
-    return this.httpClient.get<Guardian[]>(this.GUARDIAN_API).pipe(
-      catchError(this.handleError)
-    );
+    return this.httpClient.get<Guardian[]>(this.GUARDIAN_API)
   }
 
   register(guardian: Guardian): Observable<Guardian> {
-    return this.httpClient.post<Guardian>(this.GUARDIAN_API, guardian).pipe(
-      catchError(this.handleError)
-    );
+    return this.httpClient.post<Guardian>(this.GUARDIAN_API, guardian)
   }
 
   delete(guardian: Guardian): Observable<any> {
-    return this.httpClient.delete(`${this.GUARDIAN_API}/${guardian.id}`).pipe(
-      catchError(this.handleError)
-    );
+    return this.httpClient.delete(`${this.GUARDIAN_API}/${guardian.id}`)
   }
 
   update(guardian: Guardian): Observable<Guardian> {
-    return this.httpClient.put<Guardian>(`${this.GUARDIAN_API}/${guardian.id}`, guardian).pipe(
-      catchError(this.handleError)
-    );
+    return this.httpClient.put<Guardian>(`${this.GUARDIAN_API}/${guardian.id}`, guardian)
   }
 
   searchById(id: string): Observable<Guardian> {
-    return this.httpClient.get<Guardian>(`${this.GUARDIAN_API}/${id}`).pipe(
-      catchError(this.handleError)
-    );
+    return this.httpClient.get<Guardian>(`${this.GUARDIAN_API}/${id}`)
   }
 
   private handleError(error: any) {

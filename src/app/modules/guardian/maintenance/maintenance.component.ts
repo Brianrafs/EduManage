@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-//import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 //import { Address } from 'src/app/shared/model/address';
 import { Guardian } from 'src/app/shared/model/guardian';
-import { GuardianFirestoreService } from 'src/app/shared/services/guardian-firestore.service';
-//import { GuardianService } from 'src/app/shared/services/guardian.service';
- import {SnackMenssegerService} from "../../../shared/services/snack-mensseger.service";
- import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
+//import { GuardianFirestoreService } from 'src/app/shared/services/guardian-firestore.service';
+import {SnackMenssegerService} from "../../../shared/services/snack-mensseger.service";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {GuardianService} from "../../../shared/services/guardian.service";
 
 @Component({
   selector: 'app-maintenance',
@@ -22,7 +21,7 @@ export class MaintenanceComponent implements OnInit{
   guardianForm!: FormGroup;
 
   constructor(
-    private guardianService: GuardianFirestoreService,
+    private guardianService: GuardianService,
     private snackMenssegerService: SnackMenssegerService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -102,7 +101,7 @@ export class MaintenanceComponent implements OnInit{
     if (this.isRegistering) {
       this.guardianService.register(formValues).subscribe(
         addedGuardian => {
-          this.snackMenssegerService.success('Responsável '+ addedGuardian + 'cadastrado com sucesso');
+          this.snackMenssegerService.success('Responsável '+ formValues.fullName + 'cadastrado com sucesso');
           this.router.navigate(['/listing-guardians']);
         },
         error => {
@@ -120,7 +119,7 @@ export class MaintenanceComponent implements OnInit{
 
       this.guardianService.update(this.guardianTreatment).subscribe(
         updatedGuardian => {
-          this.snackMenssegerService.success('Responsável '+updatedGuardian+' atualizado com sucesso');
+          this.snackMenssegerService.success('Responsável '+ formValues.fullName +' atualizado com sucesso');
           this.router.navigate(['/listing-guardians']);
         },
         error => {
@@ -131,9 +130,9 @@ export class MaintenanceComponent implements OnInit{
   }
 
   cpfFormat(cpf: string): string {
-    cpf = cpf.replace(/\D/g, '');
-    cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-    return cpf;
+      cpf = cpf.replace(/\D/g, '');
+      cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+      return cpf;
   }
 
   onCpfInput(event: Event): void {
@@ -155,6 +154,11 @@ export class MaintenanceComponent implements OnInit{
   }
 
   isValidCpf(cpf: string): boolean {
+
+    if (cpf == null) {
+      return false;
+    }
+
     cpf = cpf.replace(/\D/g, '');
 
     if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) {
@@ -165,7 +169,13 @@ export class MaintenanceComponent implements OnInit{
     let remainder;
 
     for (let i = 1; i <= 9; i++) {
-      sum += parseInt(cpf[i - 1]) * (11 - i);
+      const digit = parseInt(cpf[i - 1]);
+
+      if (isNaN(digit)) {
+        return false; // Verifica se o dígito é um número válido
+      }
+
+      sum += digit * (11 - i);
     }
 
     remainder = (sum * 10) % 11;
@@ -177,7 +187,13 @@ export class MaintenanceComponent implements OnInit{
 
     sum = 0;
     for (let i = 1; i <= 10; i++) {
-      sum += parseInt(cpf[i - 1]) * (12 - i);
+      const digit = parseInt(cpf[i - 1]);
+
+      if (isNaN(digit)) {
+        return false;
+      }
+
+      sum += digit * (12 - i);
     }
 
     remainder = (sum * 10) % 11;
@@ -185,6 +201,7 @@ export class MaintenanceComponent implements OnInit{
 
     return remainder === parseInt(cpf[10]);
   }
+
 
   validateCpf(control: AbstractControl): { [key: string]: any } | null {
     const isValid = this.isValidCpf(control.value);

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  URL_API: 'https://edumanager-nu.vercel.app'
+  URL_API: 'http://localhost:8080'
 };
